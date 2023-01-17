@@ -49,6 +49,7 @@ justify-content: center;
 border-radius: 1.3em;
 margin-left: 20px; 
 font-size: 1.5rem;
+border: solid #e1ccbf;
 
 `;
 
