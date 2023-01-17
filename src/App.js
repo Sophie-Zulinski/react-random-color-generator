@@ -36,9 +36,11 @@ const h1Styles = css`
 export default function ExampleState() {
   // 1. Declare a state variable called "hexcolor", with
   // a default value
+  
   const [hexcolor, generateHexColor] = useState("background color hex code");
   const randomHex = Math.floor(Math.random()*16777215).toString(16);
   
+
 const divStyles = css`
 background-color: ${"#" + randomHex};
 color: black;
@@ -63,7 +65,7 @@ border: solid #e1ccbf;
       > 
         Generated Color: {hexcolor}
         </div>
-      <br></br>
+      
       <button
       css = {buttonStyles}
         onClick={() =>
