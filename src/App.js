@@ -6,28 +6,44 @@ import { css } from '@emotion/react';
 const color = "black";
 
 const buttonStyles = css`
-  background-color: #e1ccbf;
-  margin-top: 20px;
-  margin-left: 8em;
+  background-color: #C9F0FF;
   padding: 10px;
   border-color: #e1ccbf;
   &:hover { color: white}
   color: ${color};
-  border-radius: 1.3em;
-  font-size: 2rem
+  border-radius: 1.2rem;
+  font-size: 1.5rem;
+  padding: 10px; 
+  margin-top: 10px; 
 `;
 
 const h1Styles = css`
-  background-color: #e1ccbf;
-  margin-top: 20px;
-  margin-left: 20px;
+  background-color: #4F9D69;
   padding: 10px;
+  width: 15em;
+  border-color: #e1ccbf;
+  color: ${color};
+  border-radius: 1.2rem;
+  font-size: 2rem;
+  text-align: center;
+  
+`;
+
+const bodyStyles = css`
+  background-color: #EFEFF0;
+  padding: 5px;
   width: 20em;
   border-color: #e1ccbf;
   &:hover { color: white}
   color: ${color};
-  border-radius: 1.3em;
-  font-size: 2rem
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
   
 `;
 
@@ -37,31 +53,25 @@ export default function ExampleState() {
   // 1. Declare a state variable called "hexcolor", with
   // a default value
   
-  const [hexcolor, generateHexColor] = useState("background color hex code");
+  const [hexcolor, setHexcolor] = useState("background color hex code");
   const randomHex = Math.floor(Math.random()*16777215).toString(16);
   
 
-const divStyles = css`
-background-color: ${"#" + randomHex};
-color: black;
-width: 25em;
-height: 10em;
-text-align: center;
-justify-content: center;
-border-radius: 1.3em;
-margin-left: 20px; 
-font-size: 1.5rem;
-border: solid #e1ccbf;
-`;
 
   return (
-    <>
+    <body css = {bodyStyles}>
       <h1 css = {h1Styles}>Color Generator</h1> {/* Headline: Color Generator */}
 
 
       {/* 2. Use the state variable */}
       <div
-      css = {divStyles}
+      css style = {{ backgroundColor: hexcolor, 
+        width: "15em", 
+        height: "20rem", 
+        borderRadius: "5px", 
+        fontSize: "1.5rem",
+      textAlign: "center",
+    justifyContent: "center"}}
       > 
         Generated Color: {hexcolor}
         </div>
@@ -70,12 +80,11 @@ border: solid #e1ccbf;
       css = {buttonStyles}
         onClick={() =>
           // 3. Set the state variable to a new value
-          generateHexColor("#" + randomHex)
+          setHexcolor("#" + randomHex)
         }
       >
         Generate
       </button>
-   
-    </>
+      </body>
   );
 }
